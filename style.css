@@ -1,3 +1,4 @@
+/* Main LexiSearch colors and design variables */
 :root {
     --navy: #102a43;
     --blue: #2f80ed;
@@ -10,10 +11,12 @@
     --shadow: 0 12px 30px rgba(16, 42, 67, 0.1);
 }
 
+/* Makes sizing consistent across the page */
 * {
     box-sizing: border-box;
 }
 
+/* General page layout and typography */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -21,6 +24,7 @@ body {
     background: var(--light);
 }
 
+/* Navigation and search header */
 header {
     background: var(--navy);
     color: white;
@@ -32,16 +36,26 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
+/* LexiSearch logo */
 .brand {
     font-size: 1.6rem;
     font-weight: bold;
 }
 
-    .brand span {
-        color: #63b3ed;
-    }
+.brand span {
+    color: #63b3ed;
+}
+
+/* Navigation buttons */
+.nav-actions,
+.toolbar-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
 
 button,
 select,
@@ -49,30 +63,41 @@ input {
     font: inherit;
 }
 
+button {
+    cursor: pointer;
+}
+
+/* Header buttons */
 .outline {
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     background: transparent;
     color: white;
     padding: 10px 15px;
     border-radius: 8px;
-    cursor: pointer;
 }
 
+.outline:hover {
+    background: white;
+    color: var(--navy);
+}
+
+/* Main search area */
 .hero {
     max-width: 850px;
     margin: 35px auto 10px;
     text-align: center;
 }
 
-    .hero h1 {
-        margin-bottom: 8px;
-        font-size: 2.5rem;
-    }
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
 
-    .hero p {
-        color: #d9e6f2;
-    }
+.hero p {
+    color: #d9e6f2;
+}
 
+/* Search bar */
 .search-box {
     display: flex;
     margin: 25px auto 10px;
@@ -83,33 +108,35 @@ input {
     box-shadow: var(--shadow);
 }
 
-    .search-box input {
-        flex: 1;
-        border: 0;
-        outline: 0;
-        padding: 15px;
-    }
+.search-box input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    padding: 15px;
+}
 
+/* Main blue buttons */
 .primary {
     background: var(--blue);
     color: white;
     border: 0;
     border-radius: 8px;
     padding: 11px 20px;
-    cursor: pointer;
     font-weight: bold;
 }
 
-.search-box .primary {
-    padding: 0 22px;
+.primary:hover {
+    background: #1769c2;
 }
 
+/* Main page content */
 main {
     max-width: 1250px;
     margin: 30px auto;
     padding: 0 20px;
 }
 
+/* Results heading and controls */
 .toolbar {
     display: flex;
     justify-content: space-between;
@@ -119,26 +146,11 @@ main {
     margin-bottom: 18px;
 }
 
-    .toolbar h2 {
-        margin: 0;
-    }
-
-.toolbar-actions {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
+.toolbar h2 {
+    margin: 0;
 }
 
-.secondary,
-select {
-    border: 1px solid var(--border);
-    background: white;
-    color: var(--text);
-    padding: 10px;
-    border-radius: 7px;
-    cursor: pointer;
-}
-
+/* Filter area */
 .filters {
     background: white;
     border: 1px solid var(--border);
@@ -150,31 +162,33 @@ select {
     gap: 12px;
 }
 
-    .filters.active {
-        display: grid;
-    }
+.filters.active {
+    display: grid;
+}
 
-    .filters label {
-        font-size: 0.8rem;
-        color: var(--muted);
-    }
+.filters label {
+    color: var(--muted);
+    font-size: 0.8rem;
+}
 
-    .filters select,
-    .filters input {
-        display: block;
-        width: 100%;
-        margin-top: 5px;
-        padding: 9px;
-        border: 1px solid var(--border);
-        border-radius: 6px;
-    }
+.filters select,
+.filters input {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    padding: 9px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
 
+/* Product card grid */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
     gap: 20px;
 }
 
+/* Individual product cards */
 .card {
     background: white;
     border-radius: 14px;
@@ -183,10 +197,11 @@ select {
     transition: transform 0.2s;
 }
 
-    .card:hover {
-        transform: translateY(-4px);
-    }
+.card:hover {
+    transform: translateY(-4px);
+}
 
+/* Product image or emoji area */
 .product-image {
     height: 175px;
     display: grid;
@@ -195,17 +210,17 @@ select {
     background: linear-gradient(135deg, #eaf2ff, #dceeff);
 }
 
+/* Product information */
 .card-content {
     padding: 16px;
 }
 
 .card h3 {
     margin: 0 0 7px;
-    font-size: 1.05rem;
 }
 
-.muted,
-.meta {
+.meta,
+.muted {
     color: var(--muted);
     font-size: 0.85rem;
     line-height: 1.6;
@@ -217,6 +232,7 @@ select {
     margin: 12px 0;
 }
 
+/* Product availability colors */
 .availability {
     font-size: 0.82rem;
     font-weight: bold;
@@ -231,35 +247,27 @@ select {
     color: var(--red);
 }
 
+/* Product action buttons */
 .card-actions {
     display: flex;
     gap: 7px;
 }
 
-    .card-actions button {
-        flex: 1;
-        padding: 9px 5px;
-        border-radius: 7px;
-        cursor: pointer;
-        border: 1px solid var(--blue);
-        background: white;
-        color: var(--blue);
-        font-size: 0.82rem;
-    }
+.card-actions button {
+    flex: 1;
+    padding: 9px 5px;
+    border-radius: 7px;
+    border: 1px solid var(--blue);
+    background: white;
+    color: var(--blue);
+}
 
-        .card-actions button:last-child {
-            background: var(--blue);
-            color: white;
-        }
+.card-actions button:last-child {
+    background: var(--blue);
+    color: white;
+}
 
-        .card-actions button:disabled,
-        .primary:disabled {
-            background: #e5e7eb;
-            border-color: #e5e7eb;
-            color: #888;
-            cursor: not-allowed;
-        }
-
+/* Empty search results */
 .empty {
     grid-column: 1 / -1;
     background: white;
@@ -269,22 +277,23 @@ select {
     color: var(--muted);
 }
 
+/* Related keyword suggestions */
 .suggestions {
+    display: none;
     margin: 12px 0 20px;
     color: var(--muted);
-    display: none;
 }
 
-    .suggestions button {
-        margin: 4px;
-        border: 1px solid var(--blue);
-        background: white;
-        color: var(--blue);
-        border-radius: 20px;
-        padding: 7px 12px;
-        cursor: pointer;
-    }
+.suggestions button {
+    margin: 4px;
+    border: 1px solid var(--blue);
+    background: white;
+    color: var(--blue);
+    border-radius: 20px;
+    padding: 7px 12px;
+}
 
+/* Modal windows and cart drawer */
 .modal,
 .drawer {
     position: fixed;
@@ -294,10 +303,10 @@ select {
     z-index: 10;
 }
 
-    .modal.active,
-    .drawer.active {
-        display: flex;
-    }
+.modal.active,
+.drawer.active {
+    display: flex;
+}
 
 .modal-box,
 .drawer-box {
@@ -322,6 +331,7 @@ select {
     border-radius: 0;
 }
 
+/* Close buttons */
 .close {
     position: absolute;
     right: 18px;
@@ -329,9 +339,9 @@ select {
     border: 0;
     background: transparent;
     font-size: 1.5rem;
-    cursor: pointer;
 }
 
+/* LegendKey layout */
 .legend-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -339,28 +349,32 @@ select {
     margin-top: 18px;
 }
 
-    .legend-grid > div {
-        border: 1px solid var(--border);
-        padding: 12px;
-        border-radius: 8px;
-    }
+.legend-grid > div {
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 8px;
+}
 
-.cart-item {
+/* Cart layout */
+.cart-item,
+.cart-total {
     display: flex;
     justify-content: space-between;
     gap: 12px;
+}
+
+.cart-item {
     border-bottom: 1px solid var(--border);
     padding: 14px 0;
 }
 
 .cart-total {
-    display: flex;
-    justify-content: space-between;
     font-weight: bold;
     font-size: 1.2rem;
     margin-top: 20px;
 }
 
+/* Administrator panel */
 .admin-panel {
     display: none;
     margin-top: 25px;
@@ -370,9 +384,9 @@ select {
     padding: 18px;
 }
 
-    .admin-panel.active {
-        display: block;
-    }
+.admin-panel.active {
+    display: block;
+}
 
 .admin-form {
     display: grid;
@@ -381,13 +395,48 @@ select {
     margin-top: 12px;
 }
 
-    .admin-form input,
-    .admin-form select {
-        padding: 10px;
-        border: 1px solid var(--border);
-        border-radius: 6px;
-    }
+/* Login and create-account modal */
+.auth-box {
+    width: min(420px, 92%);
+}
 
+.auth-box input,
+.auth-box select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+}
+
+.auth-box .primary {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.auth-switch {
+    text-align: center;
+    color: var(--muted);
+}
+
+.text-button {
+    border: 0;
+    background: transparent;
+    color: var(--blue);
+}
+
+.hidden {
+    display: none;
+}
+
+#loginMessage,
+#createMessage {
+    color: var(--red);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Responsive layout for phones */
 @media (max-width: 600px) {
     .hero h1 {
         font-size: 2rem;
@@ -397,7 +446,7 @@ select {
         flex-direction: column;
     }
 
-        .search-box .primary {
-            padding: 13px;
-        }
+    .search-box .primary {
+        padding: 13px;
+    }
 }

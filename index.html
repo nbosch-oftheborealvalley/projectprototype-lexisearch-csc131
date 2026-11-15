@@ -1,44 +1,51 @@
-<!-- LexiSearch Clothing Store Frontend -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Defines the character set and responsive screen settings -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Defines the document type and language -->
+    <meta charset="UTF-8">
 
-    <!-- Browser tab title -->
+    <!-- Makes the website responsive on different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Text shown in the browser tab -->
     <title>LexiSearch Clothing Store</title>
 
-    <!-- Connects the HTML page to the external CSS file -->
-    <link rel="stylesheet" href="styles.css" />
+    <!-- Connects the HTML page to the CSS design file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Navigation bar containing the logo, LegendKey, cart,
-         login, and account buttons -->
+    <!-- Navigation bar containing the logo and user controls -->
     <header>
         <nav class="nav">
+            <!-- LexiSearch company logo -->
             <div class="brand">Lexi<span>Search</span></div>
 
+            <!-- Navigation buttons -->
             <div class="nav-actions">
-                <button class="outline" id="legendBtn">LegendKey</button>
+                <!-- Opens the LegendKey explanation -->
+                <button class="outline" id="legendBtn">
+                    LegendKey
+                </button>
 
+                <!-- Opens the shopping cart -->
                 <button class="outline" id="cartBtn">
                     Cart (<span id="cartCount">0</span>)
                 </button>
 
+                <!-- Opens the login form -->
                 <button class="outline" id="openLoginBtn">
                     Login
                 </button>
 
+                <!-- Opens the create-account form -->
                 <button class="outline" id="openCreateBtn">
                     Create Account
                 </button>
             </div>
         </nav>
 
-        <!-- Main search area where customers enter clothing keywords -->
+        <!-- Main search area -->
         <section class="hero">
             <h1>Find your style faster.</h1>
 
@@ -47,9 +54,12 @@
                 colors, sizes, brands, and styles.
             </p>
 
+            <!-- Search input and search button -->
             <div class="search-box">
-                <input id="searchInput"
-                       placeholder="Try “black hoodie” or “blue jeans”" />
+                <input
+                    id="searchInput"
+                    placeholder="Try black hoodie or blue jeans"
+                >
 
                 <button class="primary" id="searchBtn">
                     Search
@@ -58,18 +68,18 @@
         </section>
     </header>
 
-    <!-- Main content area containing filters, sorting,
-         product results, and administrator tools -->
     <main>
-        <!-- Search results heading and controls -->
+        <!-- Search result heading, filters, and sorting controls -->
         <div class="toolbar">
             <h2 id="resultTitle">Featured Clothing</h2>
 
             <div class="toolbar-actions">
+                <!-- Shows or hides the filter options -->
                 <button class="secondary" id="filterBtn">
                     Filters
                 </button>
 
+                <!-- Allows the customer to sort products -->
                 <select id="sortSelect">
                     <option value="default">Sort Results</option>
                     <option value="priceLow">Price: Low to High</option>
@@ -84,71 +94,241 @@
             </div>
         </div>
 
-        <!-- Product filtering controls for category, color,
-             size, and maximum price -->
+        <!-- Product filtering controls -->
         <div class="filters" id="filters">
-            <!-- Keep your existing filter labels and inputs here -->
+            <!-- Category filter -->
+            <label>
+                Category
+
+                <select id="categoryFilter">
+                    <option value="">All categories</option>
+                    <option value="Hoodies">Hoodies</option>
+                    <option value="Shirts">Shirts</option>
+                    <option value="Jeans">Jeans</option>
+                    <option value="Dresses">Dresses</option>
+                    <option value="Jackets">Jackets</option>
+                </select>
+            </label>
+
+            <!-- Color filter -->
+            <label>
+                Color
+
+                <select id="colorFilter">
+                    <option value="">All colors</option>
+                    <option value="Black">Black</option>
+                    <option value="Blue">Blue</option>
+                    <option value="White">White</option>
+                    <option value="Red">Red</option>
+                    <option value="Green">Green</option>
+                </select>
+            </label>
+
+            <!-- Size filter -->
+            <label>
+                Size
+
+                <select id="sizeFilter">
+                    <option value="">All sizes</option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="XL">XL</option>
+                </select>
+            </label>
+
+            <!-- Maximum price filter -->
+            <label>
+                Maximum Price
+
+                <input
+                    id="priceFilter"
+                    type="number"
+                    placeholder="Example: 60"
+                >
+            </label>
         </div>
 
-        <!-- Displays related keyword suggestions when needed -->
+        <!-- Related search suggestions appear here -->
         <div id="suggestions" class="suggestions"></div>
 
-        <!-- JavaScript dynamically displays clothing products here -->
+        <!-- JavaScript inserts product cards into this section -->
         <section class="grid" id="productGrid"></section>
 
-        <!-- Administrator area for adding products -->
+        <!-- Administrator product management section -->
         <section class="admin-panel" id="adminPanel">
             <h2>Administrator Product Management</h2>
+
             <p class="muted">
-                Add a product to the company clothing database.
+                Add a product to the clothing product list.
             </p>
 
-            <!-- Administrator product input form goes here -->
+            <!-- Form for adding a new clothing product -->
+            <div class="admin-form">
+                <input id="newName" placeholder="Product name">
+
+                <select id="newCategory">
+                    <option value="Hoodies">Hoodies</option>
+                    <option value="Shirts">Shirts</option>
+                    <option value="Jeans">Jeans</option>
+                    <option value="Dresses">Dresses</option>
+                    <option value="Jackets">Jackets</option>
+                </select>
+
+                <input id="newColor" placeholder="Color">
+                <input id="newSize" placeholder="Size">
+                <input id="newPrice" type="number" placeholder="Price">
+
+                <button class="primary" id="addProductBtn">
+                    Add Product
+                </button>
+            </div>
         </section>
     </main>
 
-    <!-- Login and account creation pop-up -->
+    <!-- Login and create-account modal -->
     <div class="modal" id="authModal">
-        <!-- Login and create-account forms go here -->
+        <div class="modal-box auth-box">
+            <button class="close" data-close="authModal">×</button>
+
+            <!-- Login form -->
+            <div id="loginForm">
+                <h2>Login to LexiSearch</h2>
+
+                <input id="username" placeholder="Username">
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="Password"
+                >
+
+                <select id="userRole">
+                    <option value="customer">Customer</option>
+                    <option value="admin">Administrator</option>
+                </select>
+
+                <button class="primary" id="loginBtn">
+                    Login
+                </button>
+
+                <!-- Login error messages appear here -->
+                <p id="loginMessage"></p>
+
+                <p class="auth-switch">
+                    New customer?
+
+                    <button class="text-button" id="switchToCreate">
+                        Create an account
+                    </button>
+                </p>
+            </div>
+
+            <!-- Create-account form -->
+            <div id="createForm" class="hidden">
+                <h2>Create Account</h2>
+
+                <input
+                    id="newUsername"
+                    placeholder="Choose a username"
+                >
+
+                <input
+                    id="newEmail"
+                    type="email"
+                    placeholder="Email address"
+                >
+
+                <input
+                    id="newPassword"
+                    type="password"
+                    placeholder="Create a password"
+                >
+
+                <button class="primary" id="createAccountBtn">
+                    Create Account
+                </button>
+
+                <!-- Account messages appear here -->
+                <p id="createMessage"></p>
+
+                <p class="auth-switch">
+                    Already have an account?
+
+                    <button class="text-button" id="switchToLogin">
+                        Login
+                    </button>
+                </p>
+            </div>
+        </div>
     </div>
 
-    <!-- Product details pop-up window -->
+    <!-- Product details modal -->
     <div class="modal" id="detailModal">
         <div class="modal-box">
             <button class="close" data-close="detailModal">×</button>
+
+            <!-- JavaScript inserts product details here -->
             <div id="detailContent"></div>
         </div>
     </div>
 
-    <!-- LegendKey pop-up explaining accepted search keywords -->
+    <!-- LegendKey modal -->
     <div class="modal" id="legendModal">
         <div class="modal-box">
             <button class="close" data-close="legendModal">×</button>
 
             <h2>LexiSearch LegendKey</h2>
+
             <p class="muted">
-                Use these keyword types to improve your search.
+                Use these keywords to improve your search.
             </p>
 
+            <!-- Search keyword explanations -->
             <div class="legend-grid">
-                <div><b>Clothing type</b><br />hoodie, jeans, shirt, dress</div>
-                <div><b>Color</b><br />black, blue, white, red</div>
-                <div><b>Size</b><br />small, medium, large, XL</div>
-                <div><b>Brand</b><br />Lexi, Nike, Adidas</div>
-                <div><b>Style</b><br />casual, formal, athletic</div>
-                <div><b>Price</b><br />under 50, affordable</div>
+                <div>
+                    <b>Clothing Type</b><br>
+                    hoodie, jeans, shirt, dress
+                </div>
+
+                <div>
+                    <b>Color</b><br>
+                    black, blue, white, red
+                </div>
+
+                <div>
+                    <b>Size</b><br>
+                    small, medium, large, XL
+                </div>
+
+                <div>
+                    <b>Brand</b><br>
+                    Lexi, Nike, Adidas
+                </div>
+
+                <div>
+                    <b>Style</b><br>
+                    casual, formal, athletic
+                </div>
+
+                <div>
+                    <b>Price</b><br>
+                    under 50, affordable
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Shopping cart side panel -->
+    <!-- Shopping cart drawer -->
     <aside class="drawer" id="cartDrawer">
         <div class="drawer-box">
             <button class="close" data-close="cartDrawer">×</button>
 
             <h2>Your Cart</h2>
+
+            <!-- Cart products are inserted here -->
             <div id="cartItems"></div>
 
+            <!-- Cart total -->
             <div class="cart-total">
                 <span>Total</span>
                 <span id="cartTotal">$0.00</span>
@@ -156,7 +336,7 @@
         </div>
     </aside>
 
-    <!-- Connects the HTML page to the JavaScript functionality -->
+    <!-- Connects the HTML page to JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
